@@ -2,7 +2,7 @@
 import json
 
 # Load the secret token + id from the json file, so that it can be published on githhub
-def load_config(filename="TelegramBotConfig.json"):
+def load_config(filename="config.json"):
 
     with open(filename, "r", encoding="utf-8") as f:
 
