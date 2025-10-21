@@ -2,6 +2,11 @@ import requests
 
 HEADERS = {"User-Agent": "python-requests (get public ip)"}
 
+
+
+# This function goes to the site whatismyipadress.com and gives the whole text that is received
+# another function to process. the Other function returns the extracec IP, which is then
+# returned to main.
 def get_public_ip():
     try:
         url = "https://whatismyipaddress.com/"
@@ -16,6 +21,9 @@ def get_public_ip():
     raise RuntimeError("Konnte keine öffentliche IP ermitteln.")
 
 
+# This function takes the whole text, and searches for a special line. Afterwards it searches
+# for whatever is written in quotes inside thisline.
+# it should be the IP Address, which in turn, is returned.
 def extract_ip_from_anchor(html: str) -> str:
     # Erst aus dem href lesen: href="https://whatismyipaddress.com/ip/..."
     base = "https://whatismyipaddress.com/ip/"
@@ -50,6 +58,8 @@ def extract_ip_from_anchor(html: str) -> str:
 
     raise RuntimeError("Keine IPv4 im <a>-Tag gefunden.")
 
+
+# This function just checks wether something is in the format of a IP-address
 def is_ipv4(tok: str) -> bool:
     parts = tok.split(".")
     if len(parts) != 4:
