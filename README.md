@@ -9,3 +9,9 @@ A programm on my VPN Raspi, that checks daily wether my IP changed or not. If it
 
 ## How it works
 One Programm will visit "whatsmyip.com" and will retrieve the current IP. It will then check wether theres a .txt file with a IP, if not, it will make one and send a message. If a file with IP exists, it will compare the IPs, and if they differ, it will overwrite the IP and send a message via Telegram.
+
+## The crontab Function to make it automatic
+```
+0 8 * * * /usr/bin/python3 /path/to/your/script.py
+
+```
