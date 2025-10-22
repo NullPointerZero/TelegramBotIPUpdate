@@ -28,6 +28,7 @@ def did_IP_change(filename = "config.json"):
 
     if new_IP_address != old_IP_address:
         token, chat_id = load_config()
+        send("Hey, your IP Adress changed: ", token, chat_id)
         send(new_IP_address, token, chat_id)
         write_IP_to_File(new_IP_address)
         print("[did IP change] new IP Address written")
